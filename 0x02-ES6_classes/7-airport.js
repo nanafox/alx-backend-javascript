@@ -81,6 +81,6 @@ export default class Airport {
    * @returns {string} The custom string representation of the airport.
    */
   [util.inspect.custom]() {
-    return `${Airport.name} [${this.code}] { _name: ${this._name}, _code: ${this._code} }`;
+    return `${Airport.name} [${this.code}] { _name: '${this._name}', _code: '${this._code}' }`;
   }
 }
