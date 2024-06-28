@@ -20,10 +20,6 @@ export default class Car {
    * @param {string} color - The color of the car.
    */
   constructor(brand, motor, color) {
-    validators.validateObjValue('brand', brand, 'string');
-    validators.validateObjValue('motor', motor, 'string');
-    validators.validateObjValue('color', color, 'string');
-
     this._brand = brand;
     this._motor = motor;
     this._color = color;
@@ -85,6 +81,6 @@ export default class Car {
    * @returns {Car} - The cloned car.
    */
   cloneCar() {
-    return new this.constructor(this._brand, this._motor, this._color);
+    return new this.constructor();
   }
 }
