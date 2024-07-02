@@ -6,5 +6,5 @@
  * @returns {boolean} - True if the Set contains all values from the array, false otherwise.
  */
 export default function hasValuesFromArray(set, array) {
-  return set.isSupersetOf(new Set(array));
+  return array.every((value) => set.has(value));
 }
