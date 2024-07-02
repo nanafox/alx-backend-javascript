@@ -10,7 +10,11 @@
  */
 export default function getStudentsByLocation(studentsList, location) {
   if (!Array.isArray(studentsList)) {
-    return [];
+    throw TypeError('studentsList must be an array');
+  }
+
+  if (typeof location !== 'string') {
+    throw TypeError('location must be a string');
   }
 
   return studentsList.filter((student) => student.location === location);
