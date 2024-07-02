@@ -9,12 +9,12 @@
  */
 export default function getStudentIdsSum(studentsList) {
   if (!Array.isArray(studentsList)) {
-    throw TypeError('studentsList must be an array');
+    throw new TypeError('studentsList must be an array');
   }
 
   return studentsList.reduce((accumulator, student) => {
     if (!Number.isInteger(student.id)) {
-      throw TypeError('studentId must be an integer');
+      throw new TypeError('studentId must be an integer');
     }
     return accumulator + student.id;
   }, 0);
