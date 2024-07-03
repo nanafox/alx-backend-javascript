@@ -15,4 +15,4 @@ function sumMinorCredits(subject1: MinorCredits, subject2: MinorCredits): MinorC
   return { credits: subject1.credits + subject2.credits, brand: 'Minor' };
 }
 
-console.log(sumMajorCredits({ credits: 10, brand: 'Major' }, { credits: 20, brand: 'Major' }));
+// console.log(sumMajorCredits({ credits: 10, brand: 'Major' }, { credits: 20, brand: 'Major' }));
