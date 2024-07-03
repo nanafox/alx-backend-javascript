@@ -7,14 +7,12 @@
  * specified string, separated by '-'.
  */
 export default function cleanSet(set, startString) {
-  if (!startString) {
+  if (!startString || startString.length === 0) {
     return '';
   }
-  const result = [];
-  for (const value of set) {
-    if (value.startsWith(startString)) {
-      result.push(value.slice(startString.length));
-    }
-  }
-  return result.join('-');
+
+  return [...set]
+    .filter((string) => (string !== undefined ? string.startsWith(startString) : ''))
+    .map((string) => (string !== undefined ? string.slice(startString.length) : ''))
+    .join('-');
 }
