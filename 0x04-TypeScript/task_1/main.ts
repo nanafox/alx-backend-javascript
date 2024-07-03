@@ -19,3 +19,16 @@ interface Teacher {
   location: string;
   [propName: string]: any;
 }
+
+
+/**
+ * Defines the structure of a Directors interface that extends the Teacher
+ * interface with additional properties.
+ *
+ * @interface Directors
+ * @extends {Teacher}
+ * @property {number} numberOfReports - The number of reports of the director.
+ */
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
