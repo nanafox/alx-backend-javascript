@@ -40,13 +40,30 @@ class Teacher implements TeacherInterface {
 }
 
 function createEmployee(salary: number | string): Teacher | Director {
-  if ((typeof salary === 'number') && (salary < 500)) {
-    return new Teacher
+  if (typeof salary === 'number' && salary < 500) {
+    return new Teacher();
   } else {
-    return new Director
+    return new Director();
   }
 }
 
 // console.log(createEmployee(200));
 // console.log(createEmployee(1000));
 // console.log(createEmployee('$500'));
+
+type Subjects = 'Math' | 'History';
+
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === 'Math') {
+    return 'Teaching Math';
+  } else if (todayClass === 'History') {
+    return 'Teaching History';
+  } else {
+    throw new Error('Invalid subject');
+  }
+}
+
+/*
+console.log(teachClass('History')); // Expected output: 'Teaching History'
+console.log(teachClass('Math')); // Expected output: 'Teaching Math'
+*/
