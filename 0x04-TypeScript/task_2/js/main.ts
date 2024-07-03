@@ -67,3 +67,18 @@ function teachClass(todayClass: Subjects): string {
 console.log(teachClass('History')); // Expected output: 'Teaching History'
 console.log(teachClass('Math')); // Expected output: 'Teaching Math'
 */
+
+function isDirector(employee: Director | Teacher): boolean {
+  return employee instanceof Director;
+}
+
+function executeWork(employee: Director | Teacher): string {
+  if (employee instanceof Director) {
+    return employee.workDirectorTasks();
+  } else {
+    return employee.workTeacherTasks();
+  }
+}
+
+// console.log(executeWork(createEmployee(200)));
+// console.log(executeWork(createEmployee(1000)));
