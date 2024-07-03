@@ -20,7 +20,6 @@ interface Teacher {
   [propName: string]: any;
 }
 
-
 /**
  * Defines the structure of a Directors interface that extends the Teacher
  * interface with additional properties.
@@ -32,3 +31,18 @@ interface Teacher {
 interface Directors extends Teacher {
   numberOfReports: number;
 }
+
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+/**
+ * Defines a function that prints the full name of a teacher.
+ *
+ * @param {string} firstName - The first name of the teacher.
+ * @param {string} lastName - The last name of the teacher.
+ * @returns {string} The full name of the teacher.
+ */
+const printTeacher: printTeacherFunction = (firstName: string, lastName: string): string => {
+  return `${firstName.charAt(0)}. ${lastName}`;
+};
