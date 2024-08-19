@@ -51,7 +51,7 @@ function logStudentInfo(students, field) {
  * and their fields.
  *
  * @param {string} path - The path to the CSV file.
- * @throws Will throw an error if the file cannot be read or parsed.
+ * @throws Error - If the file cannot be read or parsed.
  */
 function countStudents(path) {
   try {
