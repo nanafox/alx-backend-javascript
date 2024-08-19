@@ -1,11 +1,9 @@
-#!/usr/bin/env node
-
 /**
- * Prints a message on the console.
+ * Print a message on the STDOUT (console).
  * @param message The message to print to the console.
  */
 function displayMessage(message) {
-  process.stdout.write(`${message}\n`);
+  console.log(message);
 }
 
 module.exports = displayMessage;
