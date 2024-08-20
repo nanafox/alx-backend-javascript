@@ -1,27 +1,32 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const { csvToJSON, logStudentInfo } = require('./utils');
+const { csvToJSON, getStudentsInfo, readDBAsync } = require('./utils');
 
 /**
- * Reads a CSV file, converts it to JSON, and logs the number of students
- * and their fields.
+ * Counts the number of students from a database file and logs student
+ * information based on their majors.
  *
- * @param {string} path - The path to the CSV file.
- * @throws Error - If the file cannot be read or parsed.
+ * This function reads the database file asynchronously using the
+ * `readDBAsync` function. It then parses the data from CSV format to
+ * JSON, counts the number of students, and logs this count. Additionally,
+ * it retrieves and logs information about students majoring in 'CS'
+ * (Computer Science) and 'SWE' (Software Engineering).
+ *
+ * @param {string} path - The file system path to the database file that
+ *                        contains student data in CSV format.
+ * @returns {Promise<void>} A promise that resolves when the student
+ *                         information has been logged.
+ * @throws {Error} Throws an error if the database file cannot be read or
+ *                 if there is an issue with parsing the data.
  */
 async function countStudents(path) {
-  try {
-    const data = await fs.promises.readFile(path, 'utf8');
-    const studentData = JSON.parse(csvToJSON(data));
+  const data = await readDBAsync(path);
+  const studentsData = JSON.parse(csvToJSON(data));
 
-    console.log(`Number of students: ${studentData.length}`);
+  console.log(`Number of students: ${studentsData.length}`);
 
-    logStudentInfo(studentData, 'CS');
-    logStudentInfo(studentData, 'SWE');
-  } catch (error) {
-    throw new Error('Cannot load the database');
-  }
+  console.log(getStudentsInfo(studentsData, 'CS'));
+  console.log(getStudentsInfo(studentsData, 'SWE'));
 }
 
 module.exports = countStudents;
