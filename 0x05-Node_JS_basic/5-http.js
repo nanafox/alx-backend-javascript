@@ -16,18 +16,16 @@ const app = http.createServer(async (req, res) => {
   if (req.url === '/') {
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
-    try { // Summarize student data and send it over to the user.
-      const [
-        studentsInfo,
-        totalNumber,
-      ] = await summarizeStudentInfoByMajor(dbFile, studentMajors);
-      res.write('This is the list of our students\n');
-      res.write(`Number of students: ${totalNumber}\n`);
-      res.end(studentsInfo);
-    } catch (error) { // Errors can occur when retrieving students
-      res.statusCode = 500;
-      res.end('Cannot load the database');
-    }
+    summarizeStudentInfoByMajor(dbFile, studentMajors)
+      .then(([studentsInfo, totalNumber]) => {
+        res.write('This is the list of our students\n');
+        res.write(`Number of students: ${totalNumber}\n`);
+        res.end(studentsInfo);
+      })
+      .catch(() => {
+        res.statusCode = 500;
+        res.end('Internal Server Error');
+      });
   } else { // For all other endpoints not implemented, let's return 404
     res.statusCode = 404;
     res.end('Not Found');
