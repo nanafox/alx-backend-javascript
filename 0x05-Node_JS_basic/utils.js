@@ -97,6 +97,42 @@ async function readDBAsync(path) {
   }
 }
 
+/**
+ * Summarizes student information based on their majors from a CSV file.
+ *
+ * This function reads a CSV file, converts it to JSON, and then gathers
+ * information about students for the specified majors. It returns a
+ * summary of the students' information and the total number of students
+ * found in the dataset.
+ *
+ * @async
+ * @function summarizeStudentInfoByMajor
+ * @param {string} path - The file path to the CSV file containing student data.
+ * @param {Array<string>} studentMajors - An array of strings representing
+ * the majors for which to summarize student information.
+ * @returns {Promise<Array<string>>} A promise that resolves to an array containing:
+ * - A string with summarized student information for the specified majors,
+ *  joined by newlines.
+ * - The total number of students found in the dataset.
+ *
+ * @throws {Error} Throws an error if there is an issue reading the
+ * file or parsing the data.
+ */
+async function summarizeStudentInfoByMajor(path, studentMajors) {
+  const data = await readDBAsync(path);
+  const studentsData = JSON.parse(csvToJSON(data));
+
+  // Gather the student summary based on their major.
+  const studentsInfo = studentMajors.map((major) => getStudentsInfo(studentsData, major));
+
+  // Let's return the summarized data and the number of students found.
+  return [studentsInfo.join('\n'), studentsData.length];
+}
+
 module.exports = {
-  csvToJSON, getStudentsInfo, readDBSync, readDBAsync,
+  csvToJSON,
+  getStudentsInfo,
+  readDBSync,
+  readDBAsync,
+  summarizeStudentInfoByMajor,
 };
