@@ -7,11 +7,11 @@
  * @returns {number} The sum of the two numbers rounded up.
  */
 function calculateNumber(a, b) {
-  if (typeof a !== "number") {
+  if (typeof a !== 'number') {
     throw new TypeError("'a' must be a number");
   }
 
-  if (typeof b !== "number") {
+  if (typeof b !== 'number') {
     throw new TypeError("'b' must be a number");
   }
 

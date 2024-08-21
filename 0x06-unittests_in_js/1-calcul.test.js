@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const assert = require('assert');
+const { describe, it } = require('mocha');
 const calculateNumber = require('./1-calcul');
 const {
   additionFixtures,
@@ -11,9 +12,8 @@ const {
 } = require('./fixtures');
 const getType = require('./utils');
 
-
 describe('calculateNumber function', () => {
-  describe('General error handling capabilities', () => {
+  describe('general error handling capabilities', () => {
     it('handles invalid operation types well', () => {
       assert.throws(() => calculateNumber('BAD', 4, 5), Error);
     });
@@ -22,12 +22,11 @@ describe('calculateNumber function', () => {
       it(`fails when operation type is lowercase instead of uppercase: ${invalidOperationType}`,
         () => {
           assert.throws(() => calculateNumber(invalidOperationType, 1, 2), Error);
-        },
-      );
+        });
     });
   });
 
-  describe('Adding numbers with the SUM operation type', () => {
+  describe('adding numbers with the SUM operation type', () => {
     const operationType = 'SUM';
 
     additionFixtures.forEach(({ args, expected }) => {
@@ -41,15 +40,12 @@ describe('calculateNumber function', () => {
       it(`throws a TypeError when ${getType(args[0])} and ${getType(args[1])} are passed as arguments`,
         () => {
           assert.throws(() => calculateNumber(operationType, ...args),
-            expected,
-          );
-        },
-      );
+            expected);
+        });
     });
-
   });
 
-  describe('Subtracting numbers with the SUBTRACT operation type',
+  describe('subtracting numbers with the SUBTRACT operation type',
     () => {
       const operationType = 'SUBTRACT';
 
@@ -58,24 +54,19 @@ describe('calculateNumber function', () => {
           () => {
             const res = calculateNumber(operationType, ...args);
             assert.strictEqual(res, expected);
-          },
-        );
+          });
       });
 
       invalidArgsFixtures.forEach(({ args, expected }) => {
         it(`throws a TypeError when ${getType(args[0])} and ${getType(args[1])} are passed as arguments`,
           () => {
             assert.throws(() => calculateNumber(operationType, ...args),
-              expected,
-            );
-          },
-        );
+              expected);
+          });
       });
-    },
-  );
+    });
 
-
-  describe('Dividing numbers with the DIVIDE operation type',
+  describe('dividing numbers with the DIVIDE operation type',
     () => {
       const operationType = 'DIVIDE';
 
@@ -84,18 +75,15 @@ describe('calculateNumber function', () => {
           () => {
             const res = calculateNumber(operationType, ...args);
             assert.strictEqual(res, expected);
-          },
-        );
+          });
       });
 
       invalidArgsFixtures.forEach(({ args, expected }) => {
         it(`throws a TypeError when ${getType(args[0])} and ${getType(args[1])} are passed as arguments`,
           () => {
             assert.throws(() => calculateNumber(operationType, ...args),
-              expected,
-            );
-          },
-        );
+              expected);
+          });
       });
 
       divisionByZeroFixtures.forEach(({ args, expected }) => {
@@ -103,6 +91,5 @@ describe('calculateNumber function', () => {
           assert.strictEqual(calculateNumber(operationType, ...args), expected);
         });
       });
-    },
-  );
+    });
 });

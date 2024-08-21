@@ -9,14 +9,14 @@
  * @returns {number} The sum of the two numbers rounded up.
  */
 function calculateNumber(type, a, b) {
-  if (typeof a !== "number" || typeof b !== "number") {
-    throw new TypeError("Both arguments must be numbers");
+  if (typeof a !== 'number' || typeof b !== 'number') {
+    throw new TypeError('Both arguments must be numbers');
   }
 
   const operations = {
-    'SUM': (a, b) => Math.round(a) + Math.round(b),
-    'SUBTRACT': (a, b) => Math.round(a) - Math.round(b),
-    'DIVIDE': (a, b) => {
+    SUM: (a, b) => Math.round(a) + Math.round(b),
+    SUBTRACT: (a, b) => Math.round(a) - Math.round(b),
+    DIVIDE: (a, b) => {
       if (Math.round(b) === 0) {
         return 'Error';
       }
