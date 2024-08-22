@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+const Utils = require('./utils');
+
 /**
  * Return the integer sum of two numbers.
  * @param a {number} - The first number.
@@ -7,15 +9,7 @@
  * @returns {number} The sum of the two numbers rounded up.
  */
 function calculateNumber(a, b) {
-  if (typeof a !== 'number') {
-    throw new TypeError("'a' must be a number");
-  }
-
-  if (typeof b !== 'number') {
-    throw new TypeError("'b' must be a number");
-  }
-
-  return Math.round(a) + Math.round(b);
+  return Utils.calculateNumber('SUM', a, b);
 }
 
 module.exports = calculateNumber;

@@ -11,7 +11,7 @@ const {
   invalidArgsFixtures,
   subtractionFixtures,
 } = require('./fixtures');
-const getType = require('./utils');
+const Utils = require('./utils');
 
 describe('calculateNumber function', () => {
   describe('general error handling capabilities', () => {
@@ -38,7 +38,7 @@ describe('calculateNumber function', () => {
     });
 
     invalidArgsFixtures.forEach(({ args, expected }) => {
-      it(`throws a TypeError when ${getType(args[0])} and ${getType(args[1])} are passed as arguments`,
+      it(`throws a TypeError when ${Utils.getType(args[0])} and ${Utils.getType(args[1])} are passed as arguments`,
         () => {
           expect(() => calculateNumber(operationType, ...args)).to.throw(expected);
         });
@@ -56,7 +56,7 @@ describe('calculateNumber function', () => {
     });
 
     invalidArgsFixtures.forEach(({ args, expected }) => {
-      it(`throws a TypeError when ${getType(args[0])} and ${getType(args[1])} are passed as arguments`,
+      it(`throws a TypeError when ${Utils.getType(args[0])} and ${Utils.getType(args[1])} are passed as arguments`,
         () => {
           expect(() => calculateNumber(operationType, ...args)).to.throw(expected);
         });
@@ -74,7 +74,7 @@ describe('calculateNumber function', () => {
     });
 
     invalidArgsFixtures.forEach(({ args, expected }) => {
-      it(`throws a TypeError when ${getType(args[0])} and ${getType(args[1])} are passed as arguments`,
+      it(`throws a TypeError when ${Utils.getType(args[0])} and ${Utils.getType(args[1])} are passed as arguments`,
         () => {
           expect(() => calculateNumber(operationType, ...args)).to.throw(expected);
         });

@@ -4,7 +4,7 @@ const assert = require('assert');
 const { describe, it } = require('mocha');
 const calculateNumber = require('./0-calcul');
 const { additionFixtures, invalidArgsFixtures } = require('./fixtures');
-const getType = require('./utils');
+const Utils = require('./utils');
 
 /**
  * Test the `calculateNumber()` function.
@@ -18,7 +18,7 @@ describe('calculateNumber()', () => {
   });
 
   invalidArgsFixtures.forEach(({ args, expected }) => {
-    it(`throws a TypeError when ${getType(args[0])} and ${getType(args[1])} are passed as arguments`,
+    it(`throws a TypeError when ${Utils.getType(args[0])} and ${Utils.getType(args[1])} are passed as arguments`,
       () => {
         assert.throws(() => calculateNumber(...args), expected);
       });
